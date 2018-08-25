@@ -10,8 +10,8 @@ function setCart(c) {
 }
 
 function addToCart(item) {
-  var cart = getCart()
-  setCart([...cart, { itemName: item, itemPrice: Math.floor(Math.random() * (100 - 1) + 1) }])
+  var lcart = getCart()
+  setCart([...lcart, { itemName: item, itemPrice: Math.floor(Math.random() * (100 - 1) + 1) }])
   return `${item} has been added to your cart.`
 }
 
@@ -20,18 +20,18 @@ function itemToString(item) {
 }
 
 function viewCart() {
-  var cart = getCart()
-  if (cart.length === 0) {
+  var lcart = getCart()
+  if (lcart.length === 0) {
     return "Your shopping cart is empty."
   }
   var msg = 'In your cart, you have '
-  for (var i = 0; i < cart.length; i++) {
+  for (var i = 0; i < lcart.length; i++) {
     if (i == 0) {
-      msg += `${itemToString(cart[i])}`
-    } else if (i + 1 === cart.length) {
-      msg += `, and ${itemToString(cart[i])}`
+      msg += `${itemToString(lcart[i])}`
+    } else if (i + 1 === lcart.length) {
+      msg += `, and ${itemToString(lcart[i])}`
     } else {
-      msg += `, ${itemToString(cart[i])}`
+      msg += `, ${itemToString(lcart[i])}`
     }
   }
   return msg + '.'
@@ -42,10 +42,10 @@ function total() {
 }
 
 function removeFromCart(item) {
-  var cart = getCart()
-  for (var i = 0; i < cart.length; i++) {
-    if ( item === cart[i].itemName ) {
-      return cart.splice(i, 0)
+  var lcart = getCart()
+  for (var i = 0; i < lcart.length; i++) {
+    if ( item === lcart[i].itemName ) {
+      return lcart.splice(i, 0)
     }
   }
   return "That item is not in your cart."
